@@ -8,7 +8,7 @@ pipeline {
      maven 'M2_HOME'
   }
   environment {
-    registry = "nofatard/devop-pipeline"
+    registry = "nofatard/new-year"
     registryCredential = 'dockerID'
   }
   stages {
@@ -30,8 +30,8 @@ pipeline {
         script {
           checkout scm
           docker.withRegistry('', 'DockerID') {
-          def customImage = docker.build("nofatard/devops-pipeline:${env.BUILD_ID}")
-          def customImage1 = docker.build("nofatard/devops-pipeline")
+          def customImage = docker.build("nofatard/new-year:${env.BUILD_ID}")
+          def customImage1 = docker.build("nofatard/new-year")
           customImage.push()
           customImage1.push()
 
