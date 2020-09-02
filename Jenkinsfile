@@ -47,3 +47,8 @@ pipeline {
     }
   }
 }
+         stage ( 'deployment trigger'){
+          steps {
+            build 'new-year-CD'
+}
+}
