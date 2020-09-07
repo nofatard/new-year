@@ -34,14 +34,6 @@ pipeline {
           def customImage1 = docker.build("nofatard/new-year")
           customImage.push()
           customImage1.push()
-
-          }
-    }
-}
-    }
-    stage('deploy'){
-        steps {
-          sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook /etc/ansible/kube.yml ;', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
      
       }
     }
@@ -50,5 +42,7 @@ pipeline {
          stage ( 'deployment trigger'){
           steps {
             build 'new-year-CD'
+    }
+  }         
 }
 }
